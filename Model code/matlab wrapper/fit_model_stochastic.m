@@ -28,7 +28,7 @@ L = zeros(Ntrials,10);
 
 % times = generate_times(mean(L,2),c);
 
-fun=@(x) sum(estimate_loglik_ibs_stochastic(data,x,c,Ntrials));
+fun=@(x) mean(estimate_loglik_ibs_stochastic(data,x,c,Ntrials));
 
 params = bads(fun,x0,lb,ub,plb,pub,[],badsopts);
 

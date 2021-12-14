@@ -6,7 +6,7 @@
 #SBATCH --job-name=fourinarow
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=ik1125@nyu.edu
-#SBATCH --output=4inarow_%j.out
+#SBATCH --output=slurm/4inarow_%j.out
 
 direc=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/train
 codedirec=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper
