@@ -5,8 +5,10 @@ slurm
 *.exe
 .DS_store
 *.mexa64
+*.mexmaci64
 fits
 train
+*.asv
 
 # Prerequisites
 *.d
