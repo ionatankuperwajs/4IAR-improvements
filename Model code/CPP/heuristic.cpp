@@ -285,8 +285,16 @@ zet heuristic::makemove_bfs(board b,bool player,bool save_tree, bool save_featur
   vector<zet> candidates;
   int max_iterations=iter_dist(engine)+1;
   int iterations=0;
-  if(lapse(engine))
+  if(lapse(engine)){
+    if(!save_tree){
+      delete(game_tree);
+      game_tree = NULL;
+    }
+    if(!save_features_dropped){
+      restore_features();
+    }
     return makerandommove(b,player);
+  }
   remove_features();
   self=player;
   zet bestmove;
