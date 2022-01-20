@@ -29,7 +29,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]){
   const unsigned int N = dims[1];
   board b;
   bool player;
-  uint64 m;
+  uint64 m, m_bas, m_mine;
   double* paramptr=mxGetPr(prhs[1]);
   int Nrep = (int) mxGetScalar(prhs[2]);
 
@@ -54,9 +54,10 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]){
     player = *mxGetLogicals(mxGetCell(prhs[0],i*4+2));
     for(int j=0; j<Nrep; j++){
       m = h.makemove_bfs(b, player).zet_id;
-      m = GetLowestBitPos(m);
-      // cout<<m<<endl;
-      output[36*i + m] += 1;
+      // m_mine = GetLowestBitPos(m);
+      m_bas = uint64totile(m);
+      // cout<<m<<','<<m_mine<<','<<m_bas<<endl;
+      output[36*i + m_bas] += 1;
     }
   }
 }
