@@ -62,3 +62,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+test
+test.zip
+train
+train.zip

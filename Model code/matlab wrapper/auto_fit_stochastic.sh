@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=16
-#SBATCH --time=48:00:00
-#SBATCH --mem=8GB
+#SBATCH --time=96:00:00
+#SBATCH --mem=48GB
 #SBATCH --job-name=fourinarow
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=ik1125@nyu.edu
-#SBATCH --output=slurm/4inarow_%j.out
+#SBATCH --output=4inarow_%j.out
 
 direc=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/train
 codedirec=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper

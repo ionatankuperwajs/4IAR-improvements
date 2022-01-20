@@ -12,7 +12,7 @@ if nargin < 2
 	settings.pub = [10,1,0.5,0.5,2,5,5,5,5,5];
 	settings.plb = [0.1,0.001,0,0.05,0.5,-5,-5,-5,-5,-5];
 	settings.c = 1;
-    settings.N = 5000;
+    settings.N = 10000;
 end
 
 x0 = settings.x0;

@@ -1,7 +1,7 @@
 % Function to fit model with 5-fold cross-validation on a single user from
 % peak dataset. Splits must be pre-generated using
 % auto_split.m/generate_splits.m.
-function [moves,loglik] = test(direc, params_path, out_path)
+function [moves,loglik] = test_model(direc, params_path, out_path)
 
 % Load all the groups
 files = dir(direc);
@@ -13,7 +13,7 @@ end
 data = cat(1, group{:});
 
 % Load the parameters
-params = csvread(paramspath)
+params = csvread(params_path)
 
 % Fit model to testing data
 c = 1;

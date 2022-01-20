@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=16
-#SBATCH --time=48:00:00
-#SBATCH --mem=8GB
+#SBATCH --time=96:00:00
+#SBATCH --mem=48GB
 #SBATCH --job-name=fourinarow
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=ik1125@nyu.edu
-#SBATCH --output=slurm/4inarow_%j.out
+#SBATCH --output=4inarow_%j.out
 
 direc=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/test
 params_path=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/fits/out_params.csv
@@ -16,6 +16,6 @@ out_path=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/fits/out${SLURM_ARRAY_T
 module purge
 module load matlab/2020b
 
-echo "addpath(genpath('${codedirec}')); test('${direc}', '${params_path}', '${out_path}'); exit;" | matlab -nodisplay
+echo "addpath(genpath('${codedirec}')); test_model('${direc}', '${params_path}', '${out_path}'); exit;" | matlab -nodisplay
 
 echo "Done"
