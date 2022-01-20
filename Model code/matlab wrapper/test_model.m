@@ -24,7 +24,7 @@ Nevals = 100;
 moves_path = sprintf('%s_moves.csv', out_path);
 lltest_path = sprintf('%s_lltest.csv', out_path);
 
-csvwrite(moves_path,moves);
+csvwrite(moves_path,moves');
 csvwrite(lltest_path,loglik);
 
 end
