@@ -33,7 +33,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]){
   double* paramptr=mxGetPr(prhs[1]);
   int Nrep = (int) mxGetScalar(prhs[2]);
 
-  cout<<Nrep<<endl;
+  // cout<<Nrep<<endl;
 
   h.get_params_from_array(paramptr);
   h.seed_generator(global_generator);
