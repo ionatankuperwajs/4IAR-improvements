@@ -5,8 +5,8 @@
 #SBATCH --mem=48GB
 #SBATCH --job-name=fourinarow
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=ik1125@nyu.edu
-#SBATCH --output=slurm/4inarow_%j.out
+#SBATCH --mail-user=hhs4@nyu.edu
+#SBATCH --output=4inarow_%a.out
 
 direc=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/test/network_${SLURM_ARRAY_TASK_ID}.csv
 params_path=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/fits/out_params.csv
