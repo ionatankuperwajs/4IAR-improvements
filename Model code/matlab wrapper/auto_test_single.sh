@@ -23,6 +23,6 @@ cp -r $HOME/.matlab/R2020b $TMPDIR/.matlab/R2020b
 mkdir $TMPDIR/.matlab/local_cluster_jobs
 mkdir $TMPDIR/.matlab/local_cluster_jobs/R2020b
 
-echo "addpath(genpath('${codedirec}')); test_model_single('${direc}', '${params_path}', '${out_path}'); exit;" | matlab -nodisplay
+echo "addpath(genpath('${codedirec}')); parpool($SLURM_CPUS_PER_TASK);test_model_single('${direc}', '${params_path}', '${out_path}'); exit;" | matlab -nodisplay
 
 echo "Done"

@@ -1,6 +1,5 @@
 function [moves,loglik] = test_model_single(in_path, params_path, out_path)
 
-parpool('threads')
 % Load the group
 data = load_data_mat(in_path);
 
