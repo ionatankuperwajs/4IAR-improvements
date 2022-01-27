@@ -7,7 +7,7 @@ data = load_data_mat(in_path);
 params = csvread(params_path);
 
 % evaluate model on testing data
-c = 5;
+c = 25;
 Nevals = 200;
 
 [loglik, moves] = eval_model(data,params,c,Nevals);
