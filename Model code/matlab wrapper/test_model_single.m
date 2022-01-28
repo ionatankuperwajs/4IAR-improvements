@@ -13,7 +13,7 @@ Nevals = 200;
 [loglik, moves] = eval_model(data,params,c,Nevals);
 
 % reorder dimensions to be compatible to python neural networks:
-moves = reshape(permute(reshape(moves, 9, 4, []), [3, 2, 1]), [], 36);
+moves = reshape(permute(flip(reshape(moves, 9, 4, []), 2), [3, 2, 1]), [], 36);
 
 % Save outputs to csv
 moves_path = sprintf('%s_moves.csv', out_path);
