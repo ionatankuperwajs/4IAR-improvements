@@ -52,12 +52,12 @@ bool pattern::isempty(uint64 m){
 void heuristic::get_params_from_file(const char* filename,int n){
   ifstream input(filename,ios::in);
   string s;
-  double params[3*Nweights+7];
+  double params[3*Nweights+8];
   if(!input)
     cout<<"could not open input"<<endl;
   for(int i=0;i<n;i++)
     getline(input,s);
-  for(unsigned int i=0;i<3*Nweights+7;i++)
+  for(unsigned int i=0;i<3*Nweights+8;i++)
     input>>params[i];
   get_params_from_array(params);
   input.close();
@@ -125,8 +125,10 @@ void heuristic::update(){
   D_dist=bernoulli_distribution(fmod(D0,1.0));
   noise=normal_distribution<double>(0.0,1.0);
   lapse=bernoulli_distribution(lapse_rate);
-  for(uint64 m=1;m!=boardend;m<<=1)
-    vtile[m]=1.0/sqrt(pow(uint64totile(m)/BOARD_WIDTH-1.5,2) + pow(uint64totile(m)%BOARD_WIDTH-4.0,2));
+  double pi = 2*acos(0.0);
+  for(uint64 m=1;m!=boardend;m<<=1){
+      vtile[m]=1.0/sqrt(pow(uint64totile(m)/BOARD_WIDTH-1.5,2) + pow(uint64totile(m)%BOARD_WIDTH-4.0,2));
+  }
   c_self = 2.0*opp_scale/(1.0+opp_scale);
   c_opp = 2.0/(1.0+opp_scale);
   update_weights();
