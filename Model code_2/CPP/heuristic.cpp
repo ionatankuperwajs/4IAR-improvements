@@ -132,7 +132,10 @@ void heuristic::update(){
   double pi = 2*acos(0.0);
   for(uint64 m=1;m!=boardend;m<<=1){
       // Addition: added multivariate cauchy distribution and 3 parameters to heuristic.h + get params from array
-      vtile[m]=(1.0/(2.0*pi))*(cauchy/pow((pow(uint64totile(m)/BOARD_WIDTH-center_x,2)+pow(uint64totile(m)%BOARD_WIDTH-center_y,2)+pow(cauchy,2)),(3/2)));
+      vtile[m]=(1.0/(2.0*pi))*(cauchy/pow(
+          pow(static_cast<double>(uint64totile(m)/BOARD_WIDTH)-center_x,2)
+           +pow(static_cast<double>(uint64totile(m)%BOARD_WIDTH)-center_y,2)
+           +pow(cauchy,2),1.5));
 //       vtile[m]=1.0/sqrt(pow(uint64totile(m)/BOARD_WIDTH-1.5,2) + pow(uint64totile(m)%BOARD_WIDTH-4.0,2));
   }
   c_self = 2.0*opp_scale/(1.0+opp_scale);

@@ -1,5 +1,5 @@
 % install_mex
-% 
+
 % % Load the data and params
 % in_path = '/Users/ionatankuperwajs/Desktop/network_0.csv';
 % data = load_data_mat(in_path);
@@ -8,10 +8,11 @@
 % params = csvread(params_path);
 
 % Add the opening param and set other variables
-cauchy = 1;
-center_x = 1.0;
-center_y = 1.0;
-theta = [params(1:6) cauchy center_x center_y params(7:end)];
+w_center = 5;
+cauchy = 3.0;
+center_x = 1.5;
+center_y = 4.0;
+theta = [params(1:5) w_center cauchy center_x center_y params(7:end)];
 times = 25;
 Nevals = 2000;
 
@@ -31,6 +32,6 @@ c_act = theta(5);
 gamma = theta(2);
 pad_theta=[10000;  thresh; gamma; lambda; 1; 1; w_center; cauchy; center_x; center_y; repmat(w,4,1); 0; c_act*repmat(w,4,1); 0; repmat(delta,17,1)];
 
-i = 2;
+i = 1;
 % loglik = estimate_loglik_mex(data_cell(i,:)',pad_theta,times)';
-move_hists2 = get_move_hist(data_cell(i,:)',pad_theta,Nevals);
+move_hists1 = get_move_hist(data_cell(i,:)',pad_theta,Nevals);

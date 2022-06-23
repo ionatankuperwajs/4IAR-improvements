@@ -133,8 +133,11 @@ void heuristic::update(){
   double pi = 2*acos(0.0);
   for(uint64 m=1;m!=boardend;m<<=1){
       // Addition: added multivariate cauchy distribution and 3 parameters to heuristic.h + get params from array
-      vtile[m]=(1.0/(2.0*pi))*(cauchy/pow((pow(uint64totile(m)/BOARD_WIDTH-center_x,2)+pow(uint64totile(m)%BOARD_WIDTH-center_y,2)+pow(cauchy,2)),(3/2)));
-//       vtile[m]=1.0/sqrt(pow(uint64totile(m)/BOARD_WIDTH-1.5,2) + pow(uint64totile(m)%BOARD_WIDTH-4.0,2));
+      vtile[m]=(1.0/(2.0*pi))*(cauchy/pow(
+          pow(static_cast<double>(uint64totile(m)/BOARD_WIDTH)-center_x,2)
+           +pow(static_cast<double>(uint64totile(m)%BOARD_WIDTH)-center_y,2)
+           +pow(cauchy,2),1.5));
+      //       vtile[m]=1.0/sqrt(pow(uint64totile(m)/BOARD_WIDTH-1.5,2) + pow(uint64totile(m)%BOARD_WIDTH-4.0,2));
   }
   c_self = 2.0*opp_scale/(1.0+opp_scale);
   c_opp = 2.0/(1.0+opp_scale);
@@ -205,15 +208,10 @@ void heuristic::restore_features(){
 
 vector<zet> heuristic::get_moves(board& b, bool player, bool nosort=false){
   // Addition: histogram of opening move probabilities
-  double opening_hist[36] = {0.0450258 , 0.00297951, 0.00187878, 0.01239255,
-       0.00768284, 0.00998281, 0.00486689, 0.00636293,
-       0.01894047, 0.02909922, 0.0195959 , 0.01315609,
-       0.03545207, 0.08133206, 0.06262039, 0.02758442,
-       0.0475674 , 0.14115922, 0.11082437, 0.03357772,
-       0.02765086, 0.0596369 , 0.04791032, 0.01851892,
-       0.01405473, 0.02079329, 0.01745635, 0.00901033,
-       0.00648943, 0.00700292, 0.00564013, 0.00403256,
-       0.02497831, 0.00447259, 0.00314944, 0.01712147};
+  double opening_hist[36] = {0.0450258, 0.00768284, 0.01894047, 0.03545207, 0.0475674, 0.02765086, 0.01405473, 0.00648943, 0.02497831,
+                            0.00297951, 0.00998281, 0.02909922, 0.08133206, 0.14115922, 0.0596369, 0.02079329, 0.00700292, 0.00447259,
+                            0.00187878, 0.00486689, 0.0195959, 0.06262039, 0.11082437, 0.04791032, 0.01745635, 0.00564013, 0.00314944,
+                            0.01239255, 0.00636293, 0.01315609, 0.02758442, 0.03357772, 0.01851892, 0.00901033, 0.00403256, 0.01712147};
   vector<zet> candidate;
   unsigned int i;
   uint64 m,m1,m2;

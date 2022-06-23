@@ -5,13 +5,13 @@
 #SBATCH --mem=48GB
 #SBATCH --job-name=fourinarow
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=hhs4@nyu.edu
+#SBATCH --mail-user=ik1125@nyu.edu
 #SBATCH --output=4inarow_%a.out
 
-direc=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/test/network_${SLURM_ARRAY_TASK_ID}.csv
-params_path=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/fits/out_params.csv
-codedirec=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper
-out_path=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/fits/out${SLURM_ARRAY_TASK_ID}
+direc=$SCRATCH/fourinarow/Model\ code_2/matlab\ wrapper/test/network_${SLURM_ARRAY_TASK_ID}.csv
+params_path=$SCRATCH/fourinarow/Model\ code_2/matlab\ wrapper/fits/out_params.csv
+codedirec=$SCRATCH/fourinarow/Model\ code_2/matlab\ wrapper
+out_path=$SCRATCH/fourinarow/Model\ code_2/matlab\ wrapper/fits/out${SLURM_ARRAY_TASK_ID}
 
 module purge
 module load matlab/2020b
