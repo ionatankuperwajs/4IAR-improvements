@@ -1,21 +1,11 @@
-function [loglik, moves] = eval_model(data,theta,times,Nevals)
+function move_hists = model_one_board(board,player,theta,Nreps)
 %GENERATE_RESP_FOURINAROW Generate responses for four-in-a-row model.
 
-%times = int32(times .* ones(size(data,1),1));
-times = int32(times);
+[b, w] = ints_from_board(board);
+data = [[b, w, uint64(player), uint64(64)]];
 data_cell = num2cell(data);
-
 pad_theta = pad_input(theta);
-%loglik=estimate_loglik_mex(data_cell',pad_theta,times)';
-
-loglik = zeros(size(data_cell,1),1);
-moves = zeros(36, size(data_cell,1));
-parfor i=1:size(data_cell,1)
-  loglik(i) = estimate_loglik_mex(data_cell(i,:)',pad_theta,times)';
-  move_hists = get_move_hist(data_cell(i,:)',pad_theta,Nevals);
-  moves(:, i) = move_hists;
-end
-
+move_hists=get_move_hist(data_cell', pad_theta, Nreps);
 
 %compilation commands for mex files
 % mex -R2018a -v -output estimate_loglik_mex CXXFLAGS="$CXXFLAGS -Wall -pthread -Wextra -std=c++11 -O3 -fexpensive-optimizations" estimate_loglik_mex.cpp heuristic.cpp bfs.cpp features.cpp data_struct.cpp;
@@ -24,7 +14,7 @@ end
 end
 
 %--------------------------------------------------------------------------
-function theta = pad_input(theta)
+function pad_theta = pad_input(theta)
 %PAD_INPUT Add other fixed parameters for four-in-a-row model.
 
 g=sprintf('%f ', theta);
@@ -37,6 +27,6 @@ w = [theta(7); theta(8); theta(9); theta(10)];
 lambda = theta(4);
 c_act = theta(5);
 gamma = theta(2);
-theta=[10000;  thresh; gamma; lambda; 1; 1; w_center; repmat(w,4,1); 0; c_act*repmat(w,4,1); 0; repmat(delta,17,1)];
+pad_theta=[10000;  thresh; gamma; lambda; 1; 1; w_center; repmat(w,4,1); 0; c_act*repmat(w,4,1); 0; repmat(delta,17,1)];
 
 end

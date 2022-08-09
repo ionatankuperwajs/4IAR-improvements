@@ -33,10 +33,18 @@ fprintf('Theta = %s\n', g)
 thresh = theta(1);
 delta = theta(3);
 w_center = theta(6);
-w = [theta(7); theta(8); theta(9); theta(10)];
+w_opening = theta(7);
+w = [theta(8); theta(9); theta(10); theta(11)];
+w_defensive = theta(12);
 lambda = theta(4);
 c_act = theta(5);
 gamma = theta(2);
-theta=[10000;  thresh; gamma; lambda; 1; 1; w_center; repmat(w,4,1); 0; c_act*repmat(w,4,1); 0; repmat(delta,17,1)];
+theta=[10000;  thresh; gamma; lambda; 1; 1; w_center; w_opening; repmat(w,4,1); 0; c_act*repmat(w,4,1); 0; repmat(delta,17,1)];
+
+% Addition: add the defenisve weight to the three-in-a-row weights
+theta(11) = theta(11)+w_defensive;
+theta(15) = theta(15)+w_defensive;
+theta(19) = theta(19)+w_defensive;
+theta(23) = theta(23)+w_defensive;
 
 end
