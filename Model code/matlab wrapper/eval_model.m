@@ -33,11 +33,10 @@ fprintf('Theta = %s\n', g)
 thresh = theta(1);
 delta = theta(3);
 w_center = theta(6);
-w_corner = theta(7);
-w = [theta(8); theta(9); theta(10); theta(11)];
+w = [theta(7); theta(8); theta(9); theta(10)];
 lambda = theta(4);
 c_act = theta(5);
 gamma = theta(2);
-theta=[10000;  thresh; gamma; lambda; 1; 1; w_center; w_corner; repmat(w,4,1); 0; c_act*repmat(w,4,1); 0; repmat(delta,17,1)];
+theta=[10000;  thresh; gamma; lambda; 1; 1; w_center; repmat(w,4,1); 0; c_act*repmat(w,4,1); 0; repmat(delta,17,1)];
 
 end
