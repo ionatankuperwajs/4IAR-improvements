@@ -201,3 +201,22 @@ int node::get_depth_of_pv(){
         return 0;
     return select()->depth-depth-1;
 }
+
+void node::print_tree(int depth_limit){
+  if(depth<depth_limit){
+      cout << Nchildren << endl;
+      cout << depth << endl;
+      cout << val << endl;
+      b.write();
+      cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" << endl;
+      if(Nchildren>0){
+        for(unsigned int i=0;i<Nchildren;i++){
+            child[i]->print_tree(depth_limit);
+        }
+      }
+      else{
+        cout << "child does not exist" << endl;
+      }
+      cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << endl;
+  }
+}

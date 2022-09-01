@@ -328,7 +328,8 @@ zet heuristic::makemove_bfs(board b,bool player,bool save_tree, bool save_featur
     else t=0;
     iterations++;
   }
-
+  
+//   game_tree->print_tree(4);
   bestmove = game_tree->bestmove();
   if(!save_tree){
     delete(game_tree);

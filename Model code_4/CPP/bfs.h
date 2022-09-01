@@ -60,6 +60,7 @@ class node{
     int get_num_leaves();
     int get_num_internal_nodes();
     int get_depth_of_pv();
+    void print_tree(int);
     node* select();
     zet bestmove();
 };
