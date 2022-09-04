@@ -67,3 +67,5 @@ test
 test.zip
 train
 train.zip
+fits
+fits_*
