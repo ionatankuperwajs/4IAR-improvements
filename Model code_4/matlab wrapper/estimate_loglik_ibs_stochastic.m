@@ -30,7 +30,7 @@ c_act = theta(5);
 gamma = theta(2);
 theta=[10000;  thresh; gamma; lambda; 1; 1; w_center; w_opening; repmat(w,4,1); 0; c_act*repmat(w,4,1); 0; repmat(delta,17,1)];
 
-% Addition: add the defenisve weight to the three-in-a-row weights
+% Addition: add the defensive weight to the three-in-a-row weights
 theta(11) = theta(11)+w_defensive;
 theta(15) = theta(15)+w_defensive;
 theta(19) = theta(19)+w_defensive;
