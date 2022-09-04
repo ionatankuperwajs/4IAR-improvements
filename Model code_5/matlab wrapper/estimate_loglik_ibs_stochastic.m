@@ -21,12 +21,12 @@ fprintf('Theta = %s\n', g)
 
 thresh = theta(1);      % pruning threshold
 delta = theta(3);       % 
-w_center = theta(6);    % center weight
-w_opening = theta(7);   % opening weight
-w = [theta(8); theta(9); theta(10); 10000];
-w_defensive = theta(11);
+w_center = theta(5);    % center weight
+w_opening = theta(6);   % opening weight
+w = [theta(7); theta(8); theta(9); 10000];
+w_defensive = 100; %theta(10);
 lambda = theta(4);
-c_act = theta(5);
+c_act = 1; % theta(5);
 gamma = theta(2);
 theta=[10000;  thresh; gamma; lambda; 1; 1; w_center; w_opening; repmat(w,4,1); 0; c_act*repmat(w,4,1); 0; repmat(delta,17,1)];
 
