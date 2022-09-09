@@ -68,7 +68,7 @@ diff = abs(m1-m2);
 var = var1 + var2;
 [sorted, idx] = sort(diff, 'descend');
 thresh = sorted(k);
-rerun = abs(diff-thresh)./sqrt(var + max(var(idx(k)))) < z;
+rerun = abs(diff-thresh)./sqrt(var + max(var(idx(1:k)))) < z;
 
 n_run = 0;
 while (n_run < Nmax) && (sum(rerun) > 1)
@@ -91,7 +91,7 @@ while (n_run < Nmax) && (sum(rerun) > 1)
     var(rerun) = var1(rerun) + var2(rerun);
     [sorted, idx] = sort(diff, 'descend');
     thresh = sorted(k);
-    rerun = abs(diff-thresh)./sqrt(var + max(var(idx(k)))) < z;
+    rerun = abs(diff-thresh)./sqrt(var + max(var(idx(1:k)))) < z;
     n_run = n_run + 1;
 end
 
