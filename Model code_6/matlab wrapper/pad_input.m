@@ -5,7 +5,7 @@ g=sprintf('%f ', theta);
 fprintf('Theta = %s\n', g)
 
 thresh = theta(1);      % pruning threshold
-delta = [theta(3) theta(4) theta(5) theta(6)];       % 
+delta = [theta(3); theta(4); theta(5); theta(6)];       % 
 w_center = theta(9);    % center weight
 w_opening = theta(10);   % opening weight
 w = [theta(11); theta(12); theta(13); 10000];
