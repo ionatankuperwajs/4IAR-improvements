@@ -18,8 +18,8 @@ theta=[10000;  thresh; gamma; lambda; 1; 1; w_center; w_opening; repmat(w,4,1); 
 
 % Addition: add the defensive weight to the three-in-a-row weights
 theta(14) = theta(14)+w_defensive;
-theta(19) = theta(18)+w_defensive;
-theta(24) = theta(22)+w_defensive;
-theta(29) = theta(26)+w_defensive;
+theta(18) = theta(18)+w_defensive;
+theta(22) = theta(22)+w_defensive;
+theta(26) = theta(26)+w_defensive;
 
 end
