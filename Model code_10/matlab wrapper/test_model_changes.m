@@ -8,7 +8,7 @@ data = load_data_mat(in_path);
 times = 25;
 Nevals = 2000;
 
-theta = [3.1037,0.0080886,0.31561,0.05027,0.85213,0.62313,0.055551,0.062713,0.33942,0.,0.9332,0.68056,4.2969,100,10];
+theta = [1.363, 0.001215, 0.35687, 0.012228, 0.43389, 0.58037, 100, 0.048795, 0.022445, 0.10032, 0.036601, 1.1827, 0.6398, 3.8941, 25.043, 100];
 
 % Evaluate the model
 times = int32(times);
@@ -28,6 +28,6 @@ data_cell_test = {[uint64(5379751952)] [uint64(36641440270)] [uint64(0)] [uint64
 move_hists = get_move_hist(data_cell_test',pad_theta,Nevals);
 
 % Define a board with pseudo 3-in-a-rows (presentation example and its inverse)
-data_cell_test = {[uint64(513)] [uint64(1028)] [uint64(0)] [uint64(1)]};
-% data_cell_test = {[uint64(1028)] [uint64(513)] [uint64(0)] [uint64(1)]};
+% data_cell_test = {[uint64(513)] [uint64(1028)] [uint64(0)] [uint64(1)]};
+data_cell_test = {[uint64(1028)] [uint64(513)] [uint64(0)] [uint64(1)]};
 move_hists = get_move_hist(data_cell_test',pad_theta,Nevals);
