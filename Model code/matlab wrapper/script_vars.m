@@ -1,7 +1,7 @@
 function vars = script_vars(data)
 
 if ~exist('data','var') || isempty(data)
-    data = load_data_mat('train');
+    data = load_data_mat('../../train/network_0.csv');
 end
 
 Ns = [10,20,40,80];

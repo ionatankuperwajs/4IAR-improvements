@@ -1,4 +1,4 @@
-function [a1,a2,b1,b2] = find_biggest_diffs(data, theta1, theta2, k, p, Nmax, start_vals)
+function ab_mat = find_biggest_diffs(data, theta1, theta2, k, p, Nmax, start_vals, verbose)
 % find_biggest_diffs finds the trials with the biggest differences between
 % models with parameters theta1 and theta2
 % To allow all comparisons, this function takes already padded thetas as
@@ -20,6 +20,10 @@ end
 if ~exist('Nmax', 'var') || isempty(Nmax)
     Nmax = 10000;
 end
+if ~exist('verbose', 'var') || isempty(verbose)
+    verbose = 0;
+end
+
 
 z = abs(norminv(p/2));
 
@@ -79,6 +83,9 @@ rerun = abs(diff-thresh)./sqrt(var + max(var(idx(1:k)))) < z;
 n_run = 0;
 while (n_run < Nmax) && (sum(rerun) > 1)
     fprintf('Run %d: %d of %d under consideration\n', n_run, sum(rerun), length(rerun))
+    if verbose > 0
+        plot_ab([a1(:), a2(:), b1(:), b2(:)], rerun)
+    end
     ll = estimate_loglik_mex(data_cell(rerun,:)',theta1,times)';
     n = round(interp1(tab, ns, ll));
     a1(rerun) = a1(rerun) + 1;
@@ -101,4 +108,6 @@ while (n_run < Nmax) && (sum(rerun) > 1)
     n_run = n_run + 1;
 end
 
+
+ab_mat = [a1(:), a2(:), b1(:), b2(:)];
 end
