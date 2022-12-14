@@ -2,6 +2,8 @@ function [params,loglik] = fit_model_stochastic(data,settings)
 
 badsopts = bads('defaults');
 badsopts.UncertaintyHandling = 1;
+badsopts.SpecifyTargetNoise = true;
+badsopts.CompletePoll = true;
 badsopts.NoiseFinalSamples = 0;
 badsopts.MaxFunEvals = 2000;
 
@@ -33,7 +35,7 @@ L = zeros(Ntrials,10);
 
 % times = generate_times(mean(L,2),c);
 
-fun=@(x) mean(estimate_loglik_ibs_stochastic(data,x,c,Ntrials));
+fun=@(x) mean(estimate_loglik_ibs_stochastic_sem(data,x,c,Ntrials));
 
 params = bads(fun,x0,lb,ub,plb,pub,[],badsopts);
 
