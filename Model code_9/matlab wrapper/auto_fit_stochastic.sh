@@ -10,7 +10,7 @@
 
 direc=$SCRATCH/fourinarow/Model\ code_9/matlab\ wrapper/train
 codedirec=$SCRATCH/fourinarow/Model\ code_9/matlab\ wrapper
-out_path=$SCRATCH/fourinarow/Model\ code_9/matlab\ wrapper/fits/out_6${SLURM_ARRAY_TASK_ID}
+out_path=$SCRATCH/fourinarow/Model\ code_9/matlab\ wrapper/fits/out_${SLURM_ARRAY_TASK_ID}
 
 module purge
 module load matlab/2020b
