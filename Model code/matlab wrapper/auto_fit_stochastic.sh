@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=48
-#SBATCH --time=96:00:00
+#SBATCH --time=120:00:00
 #SBATCH --mem=48GB
 #SBATCH --job-name=fourinarow
 #SBATCH --mail-type=ALL
