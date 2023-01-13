@@ -14,6 +14,7 @@ data = cat(1, group{:});
 
 % Fit model to training data
 [params,loglik_train] = fit_model_stochastic(data);
+loglik_train = [loglik_train mean(loglik_train)];
 
 params
 
