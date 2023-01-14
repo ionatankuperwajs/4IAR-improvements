@@ -6,9 +6,8 @@ idx = randi(size(data,1),Ntrials,1);
 data_cell = num2cell(data(idx, :));
 
 pad_theta = pad_input(theta);
-loglik = zeros(size(data_cell,1),1);
 
-parpool('Threads', 48);
+loglik = zeros(size(data_cell,1),1);
 parfor i=1:size(data_cell,1)
     loglik(i)=estimate_loglik_mex(data_cell(i,:)',pad_theta,times)';
 end
