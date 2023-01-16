@@ -6,9 +6,9 @@ function [params,loglik_train] = stochastic(direc, out_path)
 % Load all the groups
 files = dir(direc);
 group = cell(length(files)-2, 1);
-for i=3:length(files)
+parfor i=3:length(files)
 	group{i-2}=load_data_mat(fullfile(direc,files(i).name));
-end	
+end
 
 data = cat(1, group{:});
 
