@@ -6,11 +6,7 @@
 #include <map>
 #include <fstream>
 
-#ifndef _WIN64
-#define NTHREADS 20
-#else
-#define NTHREADS 8
-#endif
+#define NTHREADS 48
 
 struct task{
   int i;

@@ -2,9 +2,10 @@ function [params,loglik] = fit_model_stochastic(data,settings)
 
 badsopts = bads('defaults');
 badsopts.UncertaintyHandling = 1;
+badsopts.SpecifyTargetNoise = true;
+badsopts.CompletePoll = true;
 badsopts.NoiseFinalSamples = 0;
 badsopts.MaxFunEvals = 2000;
-
 
 if nargin < 2
 % 	settings.x0 = [2,0.02,0.2,0.05,1.2,0.8,0.2,0.2,0.2,0.2,1,0.4,3.5,10];
@@ -14,11 +15,11 @@ if nargin < 2
 % 	settings.plb = [0.1,0.001,0,0.02,0.5,0.1,0.01,0.01,0.01,0.01,0,0,0,5];
 	settings.x0 = [2,0.02,0.2,0.05,0.8,0.2,0.2,0.2,0.2,1,0.4,3.5,10];
 	settings.ub = [10,1,1,1,10,10,10,10,10,10,10,10,100];
-	settings.lb = [0.1,0.001,0,0.01,0,0,0,0,0,0,0,0,0];
+	settings.lb = [0.1,0.001,0,0.001,0,0,0,0,0,0,0,0,0];
 	settings.pub = [10,1,0.5,0.5,5,5,5,5,5,5,5,5,50];
-	settings.plb = [0.1,0.001,0,0.02,0.1,0.01,0.01,0.01,0.01,0,0,0,5];
+	settings.plb = [0.1,0.001,0,0.002,0.1,0.01,0.01,0.01,0.01,0,0,0,5];
 	settings.c = 1;
-    settings.N = 10000;
+    settings.N = 250000;
 end
 
 
@@ -36,7 +37,7 @@ L = zeros(Ntrials,10);
 
 % times = generate_times(mean(L,2),c);
 
-fun=@(x) mean(estimate_loglik_ibs_stochastic(data,x,c,Ntrials));
+fun=@(x) mean(estimate_loglik_ibs_stochastic_sem(data,x,c,Ntrials));
 
 params = bads(fun,x0,lb,ub,plb,pub,[],badsopts);
 
