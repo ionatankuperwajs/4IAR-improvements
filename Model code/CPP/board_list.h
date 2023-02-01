@@ -38,7 +38,7 @@ struct todolist{
   unsigned int N;
   unsigned int Nunsolved;
   unsigned int iterations;
-  const double cutoff=5;
+  const double cutoff=10;
   const double expt_factor=1.0;
   double Lexpt;
   bool verbose;
