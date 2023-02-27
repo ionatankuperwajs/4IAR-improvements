@@ -9,9 +9,9 @@
 #SBATCH --output=4inarow_%a.out
 
 direc=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/test/network_${SLURM_ARRAY_TASK_ID}.csv
-params_path=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/fits/out_params.csv
+params_path=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/test_fits/out_params.csv
 codedirec=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper
-out_path=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/fits/out${SLURM_ARRAY_TASK_ID}
+out_path=$SCRATCH/fourinarow/Model\ code/matlab\ wrapper/test_fits/out${SLURM_ARRAY_TASK_ID}
 
 module purge
 module load matlab/2020b
