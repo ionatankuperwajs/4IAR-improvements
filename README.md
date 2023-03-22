@@ -1,3 +1,3 @@
-# fourinarow
+# 4IAR-improvements
 
-Code for running 4-in-a-row experiments and analyzing data 
+Cognitive models of human play in 4-in-a-row with mechanisms inspired by comparison with neural networks
